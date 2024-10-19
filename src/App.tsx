@@ -8,8 +8,8 @@ import {
 import Login from "./pages/login";
 import Home from "./pages/home";
 
-const BASENAME = "myteam";
-const REDIRECT_PATHNAME_KEY = `myteam__pathname`;
+const BASENAME = "/myteam";
+const REDIRECT_PATHNAME_KEY = "myteam__pathname";
 
 function AppRoutes() {
   // Handle redirect on static site
