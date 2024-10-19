@@ -17,6 +17,9 @@ function LoginButtons() {
   const handleGoogleLogin = async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
+      options: {
+        redirectTo: document.location.href,
+      },
     });
 
     if (error) {
