@@ -34,6 +34,9 @@ jobs:
 
       # New step to run the build command
       - name: Install dependencies and build project
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: |
           yarn install
           yarn build
