@@ -4,9 +4,6 @@ test("homepage loads", async ({ page }, testInfo) => {
   // Go to the home page
   await page.goto("/");
 
-  // Check that the main heading is present
-  await expect(page.locator("h1")).toContainText("Home");
-
   // Wait 3 seconds for the page to load
   await page.waitForTimeout(1000);
 
@@ -16,4 +13,7 @@ test("homepage loads", async ({ page }, testInfo) => {
     body: screenshot,
     contentType: "image/png",
   });
+
+  // Check that the main heading is present
+  await expect(page.locator("h1")).toContainText("Home");
 });
