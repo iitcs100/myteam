@@ -7,7 +7,7 @@ export default defineConfig({
   retries: 2,
   reporter: "html",
   use: {
-    baseURL: "http://localhost:5173/myteam",
+    baseURL: "http://localhost:5173",
     trace: "on-first-retry",
   },
   projects: [
