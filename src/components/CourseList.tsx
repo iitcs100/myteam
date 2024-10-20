@@ -1,5 +1,5 @@
 import { Skeleton } from "@radix-ui/themes";
-import { useQuery } from "../utils/queries";
+import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../utils/supabase";
 
 async function getCourses() {
@@ -17,13 +17,16 @@ async function getCourses() {
 }
 
 export function CourseList() {
-  const coursesQuery = useQuery(getCourses);
-  const courses = coursesQuery.data ?? [];
+  const { data, isPending } = useQuery({
+    queryKey: ["courses"],
+    queryFn: getCourses,
+  });
+  const courses = data ?? [];
 
   return (
     <div>
       <h2>Courses</h2>
-      <Skeleton loading={coursesQuery.isLoading} minHeight="48px">
+      <Skeleton loading={isPending} minHeight="48px">
         <ul>
           {courses.map((course) => (
             <li key={course.id}>{course.name}</li>
