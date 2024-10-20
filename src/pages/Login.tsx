@@ -19,13 +19,11 @@ function LoginButtons() {
   const handleGoogleLogin = async () => {
     // Redirect back to the current page, but exclude any URL hash or parameters.
     const redirectTo = `${document.location.origin}${document.location.pathname}`;
-    console.log("google login", { redirectTo });
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: { redirectTo },
     });
 
-    console.log("google login result", { error });
     if (error) {
       setErrorMessage(error.message);
     } else {
