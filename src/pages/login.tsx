@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { supabase } from "../utils/supabase";
 import { useAuthSession } from "../utils/auth";
+import { EnterIcon, ExitIcon } from "@radix-ui/react-icons";
+import { Box, Button, Flex } from "@radix-ui/themes";
 
 function CurrentUser() {
   const session = useAuthSession();
@@ -34,20 +36,28 @@ function LoginButtons() {
   };
 
   return (
-    <>
-      <button onClick={handleGoogleLogin}>Sign in with Google</button>
-      <button onClick={handleLogout}>Sign out</button>
+    <Box>
+      <Flex gap="2">
+        <Button onClick={handleGoogleLogin} variant="outline">
+          <EnterIcon />
+          Sign in with Google
+        </Button>
+        <Button onClick={handleLogout} variant="outline" color="ruby">
+          <ExitIcon />
+          Sign out
+        </Button>
+      </Flex>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-    </>
+    </Box>
   );
 }
 
 export default function Login() {
   return (
-    <>
-      <div>Login</div>
+    <div>
+      <h1>Login</h1>
       <CurrentUser />
       <LoginButtons />
-    </>
+    </div>
   );
 }

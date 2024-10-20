@@ -5,13 +5,15 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
-import Login from "./pages/login";
-import Home from "./pages/home";
+import { Layout } from "./components/layout";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import NotFound from "./pages/NotFound";
 
 const BASENAME = "/myteam";
 const REDIRECT_PATHNAME_KEY = "myteam__pathname";
 
-function AppRoutes() {
+function AppPage() {
   // Handle redirect on static site
   const navigateTo = useNavigate();
   useEffect(() => {
@@ -27,6 +29,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
@@ -34,7 +37,9 @@ function AppRoutes() {
 export default function App() {
   return (
     <Router basename={BASENAME}>
-      <AppRoutes />
+      <Layout>
+        <AppPage />
+      </Layout>
     </Router>
   );
 }
