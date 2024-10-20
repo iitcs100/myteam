@@ -20,18 +20,16 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install dependencies and build project
-        env:
-          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
-        run: |
-          yarn install
-          yarn build
+      - name: Install dependencies
+        run: yarn install
 
       - name: Install Playwright Browsers
         run: npx playwright install chromium
 
       - name: Run Playwright tests
+        env:
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
         run: yarn e2e
 
       - name: Upload Playwright report
