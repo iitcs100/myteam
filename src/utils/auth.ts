@@ -5,13 +5,18 @@ import { Session } from "@supabase/supabase-js";
 export function useAuthSession() {
   const [session, setSession] = useState<Session | null>(null);
 
-  async function getSession() {
+  async function getInitialSession() {
     const session = await supabase.auth.getSession();
-    setSession(session.data.session);
+    // To avoid a race condition with the auth state lisner, only set the
+    // session if it is not null. Logout events will be handled by the listener.
+    if (session.data.session != null) {
+      setSession(session.data.session);
+    }
   }
 
   useEffect(() => {
-    getSession();
+    getInitialSession();
+
     const listener = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
