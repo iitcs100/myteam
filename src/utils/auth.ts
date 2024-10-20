@@ -6,12 +6,12 @@ export function useAuthSession() {
   const [session, setSession] = useState<Session | null>(null);
 
   async function getInitialSession() {
-    const session = await supabase.auth.getSession();
-    console.log("get initial session", { session });
+    const currentSession = await supabase.auth.getSession();
+    console.log("get initial session", { currentSession });
     // To avoid a race condition with the auth state lisner, only set the
     // session if it is not null. Logout events will be handled by the listener.
-    if (session.data.session != null) {
-      setSession(session.data.session);
+    if (currentSession.data.session != null) {
+      setSession(currentSession.data.session);
     }
   }
 
