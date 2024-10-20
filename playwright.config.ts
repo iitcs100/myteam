@@ -1,7 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
 
-console.log({ CI: process.env.CI, isNotCI: !process.env.CI });
-
 export default defineConfig({
   testDir: "./e2e",
   fullyParallel: true,
@@ -9,7 +7,7 @@ export default defineConfig({
   retries: 2,
   reporter: "html",
   use: {
-    baseURL: "http://localhost:5173",
+    baseURL: "http://localhost:5173/myteam",
     trace: "on-first-retry",
   },
   projects: [
