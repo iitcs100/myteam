@@ -1,5 +1,5 @@
 import { Skeleton } from "@radix-ui/themes";
-import { useQuery } from "../utils/queries";
+import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../utils/supabase";
 
 async function getUnits() {
@@ -22,13 +22,16 @@ async function getUnits() {
 }
 
 export function UnitList() {
-  const unitsQuery = useQuery(getUnits);
-  const units = unitsQuery.data ?? [];
+  const { data, isPending } = useQuery({
+    queryKey: ["units"],
+    queryFn: getUnits,
+  });
+  const units = data ?? [];
 
   return (
     <div>
       <h2>Units</h2>
-      <Skeleton loading={unitsQuery.isLoading} minHeight="48px">
+      <Skeleton loading={isPending} minHeight="48px">
         <ul>
           {units.map((unit) => (
             <li key={unit.id}>

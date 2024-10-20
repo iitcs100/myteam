@@ -1,5 +1,5 @@
 import { Skeleton } from "@radix-ui/themes";
-import { useQuery } from "../utils/queries";
+import { useQuery } from "@tanstack/react-query";
 import { supabase } from "../utils/supabase";
 import { Database } from "../supabase.d";
 
@@ -40,13 +40,16 @@ function UnitList({ units }: { units: Unit[] }) {
 }
 
 export function UnitListByCourse() {
-  const coursesQuery = useQuery(getCoursesWithUnits);
-  const courses = coursesQuery.data ?? [];
+  const { data, isPending } = useQuery({
+    queryKey: ["coursesWithUnits"],
+    queryFn: getCoursesWithUnits,
+  });
+  const courses = data ?? [];
 
   return (
     <div>
       <h2>Courses with Units</h2>
-      <Skeleton loading={coursesQuery.isLoading} minHeight="48px">
+      <Skeleton loading={isPending} minHeight="48px">
         <ul>
           {courses.map((course) => (
             <li key={course.id}>
