@@ -7,6 +7,7 @@ export function useAuthSession() {
 
   async function getInitialSession() {
     const session = await supabase.auth.getSession();
+    console.log("get initial session", { session });
     // To avoid a race condition with the auth state lisner, only set the
     // session if it is not null. Logout events will be handled by the listener.
     if (session.data.session != null) {
@@ -17,12 +18,17 @@ export function useAuthSession() {
   useEffect(() => {
     getInitialSession();
 
-    const listener = supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
+    const listener = supabase.auth.onAuthStateChange((event, newSession) => {
+      console.log("auth state change", { event, newSession });
+      setSession(newSession);
     });
 
-    return () => listener.data.subscription.unsubscribe();
+    return () => {
+      console.log("unsubscribing", { session });
+      listener.data.subscription.unsubscribe();
+    };
   }, []);
 
+  console.log("hook return", { session });
   return session;
 }

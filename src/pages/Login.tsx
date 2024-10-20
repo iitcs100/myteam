@@ -17,6 +17,7 @@ function LoginButtons() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleGoogleLogin = async () => {
+    console.log("google login", { redirectTo: document.location.href });
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
@@ -24,6 +25,7 @@ function LoginButtons() {
       },
     });
 
+    console.log("google login result", { error });
     if (error) {
       setErrorMessage(error.message);
     } else {
