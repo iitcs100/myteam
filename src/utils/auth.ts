@@ -2,6 +2,14 @@ import { useState, useEffect } from "react";
 import { supabase } from "./supabase";
 import { Session } from "@supabase/supabase-js";
 
+async function upsertUserFromSession(session: Session) {
+  // Upsert means to update a record if it exists, or insert it if it does not.
+  await supabase.from("user").upsert({
+    id: session.user.id,
+    name: session.user.user_metadata.full_name ?? "No Name",
+  });
+}
+
 export function useAuthSession() {
   const [session, setSession] = useState<Session | null>(null);
 
@@ -19,7 +27,12 @@ export function useAuthSession() {
     getInitialSession();
 
     const listener = supabase.auth.onAuthStateChange((_event, newSession) => {
+      // Update state so the app can know whether the user is logged in or out.
       setSession(newSession);
+      // If the user logged in, update the database with their information.
+      if (newSession != null) {
+        upsertUserFromSession(newSession);
+      }
     });
 
     return () => {
