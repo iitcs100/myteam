@@ -1,6 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 
-console.log({ CI: process.env.CI });
+console.log({ CI: process.env.CI, isNotCI: !process.env.CI });
 
 export default defineConfig({
   testDir: "./e2e",
