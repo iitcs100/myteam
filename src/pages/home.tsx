@@ -1,22 +1,10 @@
-import { useCourses } from "../data/fetchers";
-
-function CourseList() {
-  const courses = useCourses();
-
-  return (
-    <ul>
-      {courses.map((course) => (
-        <li key={course.id}>{course.name}</li>
-      ))}
-    </ul>
-  );
-}
+import { CourseList } from "../components/CourseList";
 
 export default function Home() {
   return (
-    <>
-      <div>Home</div>
+    <div>
+      <h1>Home</h1>
       <CourseList />
-    </>
+    </div>
   );
 }
