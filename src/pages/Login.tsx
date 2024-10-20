@@ -17,12 +17,12 @@ function LoginButtons() {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleGoogleLogin = async () => {
-    console.log("google login", { redirectTo: document.location.href });
+    // Redirect back to the current page, but exclude any URL hash or parameters.
+    const redirectTo = `${document.location.origin}${document.location.pathname}`;
+    console.log("google login", { redirectTo });
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "google",
-      options: {
-        redirectTo: document.location.href,
-      },
+      options: { redirectTo },
     });
 
     console.log("google login result", { error });
