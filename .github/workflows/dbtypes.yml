@@ -1,0 +1,40 @@
+# Workflow to check whether the branch reflects the latest database schema.
+name: Check Database Types
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  check-db-types:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Generate database types
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: yarn dbtypes
+
+      - name: Check for changes
+        run: |
+          if [[ `git status --porcelain src/supabase.d.ts` ]]; then
+            echo "Error: Changes detected in `src/supabase.d.ts`."
+            echo "Please run `yarn dbtypes` locally and commit the changes."
+            exit 1
+          fi

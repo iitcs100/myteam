@@ -7,7 +7,7 @@ export type Json =
   | Json[]
 
 export type Database = {
-  api: {
+  public: {
     Tables: {
       course: {
         Row: {
@@ -26,6 +26,35 @@ export type Database = {
           name?: string
         }
         Relationships: []
+      }
+      unit: {
+        Row: {
+          course_id: string
+          created_at: string
+          id: string
+          name: string
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          id?: string
+          name: string
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          id?: string
+          name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "unit_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "course"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
