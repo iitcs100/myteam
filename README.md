@@ -2,13 +2,15 @@
 
 ## Development
 
-If you are using Gitpod, the app will automatically start in development mode when the workspace is ready.
+If you are setting up the project for the first time, go to the section below labeled [Prerequisites](#prerequisites) to set up your development environment.
 
-If you are not using Gitpod, go to the section below labeled Prerequisites to set up your development environment.
+Otherwise, refer to these commands for common tasks.
 
 ### Run the app in development mode
 
 Development mode runs the app on port 5173 and the app will automatically update as you make changes to the code.
+
+The app will be available at [http://localhost:5173/myteam/](http://localhost:5173/myteam/).
 
 ```sh
 yarn dev
@@ -52,31 +54,31 @@ yarn dbtypes
 
 ## Prerequisites
 
-If you are using Gitpod, the prerequisites are already installed.
+1. Install [Visual Studio Code](https://code.visualstudio.com/download) as a code editor.
 
-Otherwise:
-
-Install nvm, the [Node Version Manager](https://github.com/nvm-sh/nvm).
+2. Install nvm, the [Node Version Manager](https://github.com/nvm-sh/nvm).
 
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ```
 
-Install and activate Node.js version 20, using nvm.
+3. Install and activate Node.js version 20, using nvm.
 
 ```sh
 nvm install 20
 nvm use 20
 ```
 
-Installing Node.js also installs npm, the Node Package Manager. Use npm to install yarn, another package manager which we will use for our project.
+4. Installing Node.js also installs npm, the Node Package Manager. Use npm to install yarn, another package manager which we will use for our project.
 
 ```sh
 npm install --global yarn
 ```
 
-Install the project dependencies using yarn.
+5. Install the project dependencies using yarn.
 
 ```sh
 yarn install
 ```
+
+6. Now go back to the [Development](#development) section to run the app in development mode!
