@@ -10,7 +10,7 @@
     "e2e": "playwright test",
     "e2e:headed": "playwright test --headed",
     "lint": "eslint .",
-    "dbtypes": "dotenv -e .env -- supabase gen types typescript --project-id yfgkuprkikejltrandhk > src/supabase.d.ts",
+    "dbtypes": "dotenv -e .env -- supabase gen types typescript --project-id tuuzbnstspmeztwkpdus > src/supabase.d.ts",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -9,7 +9,7 @@ function Header() {
   return (
     <Box>
       <Flex justify="between" align="center">
-        <Text weight="bold">myTeam</Text>
+        <Text weight="bold">GetForked</Text>
         <Flex justify="end" gap="4" align="center">
           <Link to="/">Home</Link>
           <Link to="/login">Login</Link>

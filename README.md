@@ -1,4 +1,4 @@
-# myteam
+# getforked
 
 ## Development
 
@@ -10,7 +10,7 @@ Otherwise, refer to these commands for common tasks.
 
 Development mode runs the app on port 5173 and the app will automatically update as you make changes to the code.
 
-The app will be available at [http://localhost:5173/myteam/](http://localhost:5173/myteam/).
+The app will be available at [http://localhost:5173/getforked/](http://localhost:5173/getforked/).
 
 ```sh
 yarn dev
@@ -81,4 +81,22 @@ npm install --global yarn
 yarn install
 ```
 
-6. Now go back to the [Development](#development) section to run the app in development mode!
+6. Create an environment variables file.
+
+Create a file in the main folder of your repository called `.env`, either by using the file editor or by running this command in the terminal in the main folder of your repository:
+
+```sh
+touch .env
+```
+
+Vinesh will send you the contents to paste into this file. This file contains secrets that we cannot release publicly. This file will not be committed to the repository because we have a `.gitignore` file set up to keep it out of the repository.
+
+When you are done, the contents of the file will look like this (with secrets replaced):
+
+```
+VITE_SUPABASE_URL=secret
+VITE_SUPABASE_ANON_KEY=secret
+SUPABASE_ACCESS_TOKEN=secret
+```
+
+7. Now go back to the [Development](#development) section to run the app in development mode!

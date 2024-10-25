@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const BASENAME = "/myteam";
-const REDIRECT_PATHNAME_KEY = "myteam__pathname";
-const REDIRECT_SEARCH_KEY = "myteam__search";
-const REDIRECT_HASH_KEY = "myteam__hash";
+export const BASENAME = "/getforked";
+const REDIRECT_PATHNAME_KEY = "getforked__pathname";
+const REDIRECT_SEARCH_KEY = "getforked__search";
+const REDIRECT_HASH_KEY = "getforked__hash";
 
 // Handles routing redirects on static sites like GitHub Pages.
 // If a user navigates to a URL other than the root URL where the static site
