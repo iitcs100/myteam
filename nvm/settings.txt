@@ -1,0 +1,2 @@
+root: C:\Users\chanj\Documents\GitHub\myteam\nvm
+path: C:\Program Files\nodejs

@@ -94,9 +94,9 @@ Vinesh will send you the contents to paste into this file. This file contains se
 When you are done, the contents of the file will look like this (with secrets replaced):
 
 ```
-VITE_SUPABASE_URL=secret
-VITE_SUPABASE_ANON_KEY=secret
-SUPABASE_ACCESS_TOKEN=secret
+VITE_SUPABASE_URL=https://yfgkuprkikejltrandhk.supabase.co
+VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlmZ2t1cHJraWtlamx0cmFuZGhrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjkzNjgyMDMsImV4cCI6MjA0NDk0NDIwM30.y-kly95WHLjRF6jlTxE46Cq_x1dPINnfEFlpbOTs6_Y
+SUPABASE_ACCESS_TOKEN=sbp_14b24b6c3f1162b59bf85a0bcac9562e7aea8118
 ```
 
 7. Now go back to the [Development](#development) section to run the app in development mode!
